@@ -146,9 +146,9 @@ class plgVmPaymentCoinfide extends vmPSPlugin
             $citem = new \Coinfide\Entity\OrderItem();
 
             $citem->setName($item->order_item_name);
-            $citem->setType('I'); //todo: shipping?
+            $citem->setType('I');
             $citem->setQuantity($item->product_quantity);
-            $citem->setPriceUnit(floatval($item->product_final_price));
+            $citem->setPriceUnit(round(floatval($item->product_final_price), 2));
 
             $corder->addOrderItem($citem);
         }

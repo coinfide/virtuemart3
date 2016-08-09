@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension version="2.5" type="plugin" group="vmpayment" method="upgrade">
     <name>Coinfide</name>
-    <creationDate>Aug 01 2016</creationDate>
+    <creationDate>Aug 09 2016</creationDate>
     <author>LRG Service</author>
     <authorUrl>https://www.coinfide.com/</authorUrl>
     <copyright>Copyright (C) 2015-2016 LRG Service. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <description>Coinfide automated payment solution</description>
     <!--<languages>ini files for future languages</languages>-->
     <files>

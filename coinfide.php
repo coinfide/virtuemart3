@@ -94,6 +94,10 @@ class plgVmPaymentCoinfide extends vmPSPlugin
             return NULL;
         }
 
+        if (!$this->selectedThisElement($method->payment_element)) {
+            return null;
+        }
+
         /** @var $cart VirtueMartCart */
 
         //client setup

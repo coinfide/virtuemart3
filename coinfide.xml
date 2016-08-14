@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<extension version="2.0" type="plugin" group="vmpayment" method="upgrade">
+<extension version="2.0.1" type="plugin" group="vmpayment" method="upgrade">
     <name>Coinfide</name>
     <creationDate>Aug 14 2016</creationDate>
     <author>LRG Service</author>

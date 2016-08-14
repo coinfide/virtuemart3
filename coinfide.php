@@ -33,7 +33,19 @@ class plgVmPaymentCoinfide extends vmPSPlugin
     }
 
     function getTableSQLFields () {
-        return false;
+        return array (
+            'id'                            => 'int(11) UNSIGNED NOT NULL AUTO_INCREMENT',
+            'virtuemart_order_id'           => 'int(1) UNSIGNED',
+            'order_number'                  => ' char(64)',
+            'virtuemart_paymentmethod_id'   => 'mediumint(1) UNSIGNED',
+            'payment_name'                  => 'varchar(5000)',
+            'payment_order_total'           => 'decimal(15,5) NOT NULL DEFAULT \'0.00000\'',
+            'payment_currency'              => 'char(3) ',
+            'cost_per_transaction'          => 'decimal(10,2)',
+            'cost_percent_total'            => 'decimal(10,2)',
+            'tax_id'                        => 'smallint(1)',
+            'user_session'                  => 'varchar(255)'
+        );
     }
 
     public function plgVmOnPaymentNotification()

@@ -128,10 +128,12 @@ class plgVmPaymentCoinfide extends vmPSPlugin
         $corder->setSeller($seller);
 
         //buyer
+        $lang = JFactory::getLanguage();
         $buyer = new \Coinfide\Entity\Account();
         $buyer->setEmail($order['details']['BT']->email);
         $buyer->setName($order['details']['BT']->first_name . ' ' . $order['details']['BT']->last_name);
         $buyer->setPhone((new \Coinfide\Entity\Phone())->setFullNumber($order['details']['BT']->phone_2));
+        $buyer->setLanguage(strtoupper(substr($lang->getTag(), 0, 2)));
 
         $baddress = new \Coinfide\Entity\Address();
         $baddress->setCity($order['details']['BT']->city);

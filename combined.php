@@ -2719,7 +2719,17 @@ class Client
         }
 
         if (isset($decoded['errorData'])) {
-            throw new CoinfideException($decoded['errorData']['errorMessage'], $decoded['errorData']['errorCode']);
+            $message = $decoded['errorData']['errorMessage'];
+
+            if (
+                isset($decoded['errorData']['parameters']) &&
+                is_array($decoded['errorData']['parameters']) &&
+                count(array_filter($decoded['errorData']['parameters'], 'is_scalar')) != 0
+            ) {
+                $message = $message . ': ' . implode(', ', array_filter($decoded['errorData']['parameters'], 'is_scalar'));
+            }
+
+            throw new CoinfideException($message, $decoded['errorData']['errorCode']);
         }
 
         return $decoded;

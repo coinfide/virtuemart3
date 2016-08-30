@@ -202,11 +202,12 @@ namespace  Coinfide\Entity {
 class Account extends Base
 {
     protected $validationRules = array(
-        'email' => array('type' => 'string', 'required' => true),
+        'email' => array('type' => 'string', 'required' => true, 'max_length' => 255),
         'phone' => array('type' => 'object', 'class' => '\Coinfide\Entity\Phone', 'required' => false),
         'externalUid' => array('type' => 'string', 'max_length' => 50, 'required' => false),
-        'name' => array('type' => 'string', 'max_length' => 255, 'required' => false),
-        'surname' => array('type' => 'string', 'max_length' => 255, 'required' => false),
+        'name' => array('type' => 'string', 'max_length' => 50, 'required' => false),
+        'surname' => array('type' => 'string', 'max_length' => 50, 'required' => false),
+        'birthDate' => array('type' => 'date', 'required' => false),
         'language' => array('type' => 'string', 'max_length' => 2, 'required' => false),
         'address' => array('type' => 'object', 'class' => '\Coinfide\Entity\Address', 'required' => false),
         'website' => array('type' => 'string', 'max_length' => 2048, 'required' => false),
@@ -238,6 +239,11 @@ class Account extends Base
      * @var string
      */
     protected $surname;
+
+    /**
+     * @var string
+     */
+    protected $birthDate;
 
     /**
      * @var string
@@ -347,6 +353,22 @@ class Account extends Base
     /**
      * @return string
      */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param string $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return string
+     */
     public function getLanguage()
     {
         return $this->language;
@@ -433,11 +455,11 @@ class Address extends Base
 {
     protected $validationRules = array(
         'countryCode' => array('type' => 'string', 'max_length' => 2, 'required' => true),
-        'city' => array('type' => 'string', 'max_length' => 255, 'required' => true),
-        'firstAddressLine' => array('type' => 'string', 'max_length' => 255, 'required' => true),
-        'secondAddressLine' => array('type' => 'string', 'max_length' => 255, 'required' => false),
-        'state' => array('type' => 'string', 'max_length' => 255, 'required' => false),
-        'postalCode' => array('type' => 'string', 'max_length' => 255, 'required' => false)
+        'city' => array('type' => 'string', 'max_length' => 50, 'required' => true),
+        'firstAddressLine' => array('type' => 'string', 'max_length' => 60, 'required' => true),
+        'secondAddressLine' => array('type' => 'string', 'max_length' => 60, 'required' => false),
+        'state' => array('type' => 'string', 'max_length' => 50, 'required' => false),
+        'postalCode' => array('type' => 'string', 'max_length' => 10, 'required' => true)
     );
 
     /**

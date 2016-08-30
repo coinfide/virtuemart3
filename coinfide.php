@@ -131,7 +131,8 @@ class plgVmPaymentCoinfide extends vmPSPlugin
         $lang = JFactory::getLanguage();
         $buyer = new \Coinfide\Entity\Account();
         $buyer->setEmail($order['details']['BT']->email);
-        $buyer->setName($order['details']['BT']->first_name . ' ' . $order['details']['BT']->last_name);
+        $buyer->setName($order['details']['BT']->first_name ?: 'unknown');
+        $buyer->setSurname($order['details']['BT']->last_name ?: 'unknown');
         $buyer->setPhone((new \Coinfide\Entity\Phone())->setFullNumber($order['details']['BT']->phone_2));
         $buyer->setLanguage(strtoupper(substr($lang->getTag(), 0, 2)));
 
@@ -163,7 +164,7 @@ class plgVmPaymentCoinfide extends vmPSPlugin
         foreach ($order['items'] as $item) {
             $citem = new \Coinfide\Entity\OrderItem();
 
-            $citem->setName($item->order_item_name);
+            $citem->setName($item->order_item_name ?: 'unknown');
             $citem->setType('I');
             $citem->setQuantity($item->product_quantity);
             $citem->setPriceUnit(round(floatval($item->product_final_price), 2));

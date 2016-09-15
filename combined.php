@@ -2551,14 +2551,15 @@ class Client
     {
         $this->options = array_merge(array(
             'trace' => false,
-            'sslOptions' => array()
+            //magic: CURL_SSLVERSION_TLSv1 = 1, but the constant is not present in many distrubutions till 5.5
+            'sslOptions' => array(CURLOPT_SSLVERSION => 1)
         ), $options);
     }
 
     public function setMode($mode)
     {
         if ($mode == 'demo') {
-            $this->endpoint = 'http://demo-api.enauda.com/paymentapi/';
+            $this->endpoint = 'https://demo-paymentapi.coinfide.com/paymentapi/';
         } elseif ($mode == 'prod') {
             $this->endpoint = 'https://paymentapi.coinfide.com/paymentapi/';
         } else {

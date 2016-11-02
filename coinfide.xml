@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<extension version="2.0.5" type="plugin" group="vmpayment" method="upgrade">
+<extension version="2.0.6" type="plugin" group="vmpayment" method="upgrade">
     <name>Coinfide</name>
-    <creationDate>Sep 15 2016</creationDate>
+    <creationDate>Nov 2 2016</creationDate>
     <author>LRG Service</author>
     <authorUrl>https://www.coinfide.com/</authorUrl>
     <copyright>Copyright (C) 2015-2016 LRG Service. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
     <description>Coinfide automated payment solution</description>
     <!--<languages>ini files for future languages</languages>-->
     <files>
@@ -16,7 +16,8 @@
     </files>
     <vmconfig>
         <fields name="params">
-            <fieldset name="coinfide">
+            <!--<fieldset name="coinfide" addfieldpath="/plugins/vmpayment/coinfide/fields">-->
+            <fieldset name="coinfide" addfieldpath="/plugins/vmpayment/coinfide/fields">
                 <field name="COINFIDE_PAYMENT_MODE" type="radio" default="demo" label="Coinfide gateway mode"
                        description="Whether the gateway operates in demo or production mode">
                     <option value="demo">demo</option>
@@ -26,6 +27,7 @@
                 <field type="text" name="COINFIDE_PAYMENT_API_USERNAME" default="" label="API username" />
                 <field type="text" name="COINFIDE_PAYMENT_API_PASSWORD" default="" label="API password" />
                 <field type="text" name="COINFIDE_PAYMENT_API_SECRET" default="" label="API secret" />
+                <!--<field type="cfgateways" name="COINFIDE_PAYMENT_ENABLED_GATEWAYS" default="" label="Enabled gateways" />-->
             </fieldset>
         </fields>
     </vmconfig>

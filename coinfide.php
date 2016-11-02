@@ -153,6 +153,11 @@ class plgVmPaymentCoinfide extends vmPSPlugin
         $corder->setCurrencyCode(self::getCurrencyByID($order['details']['BT']->order_currency));
         $corder->setExternalOrderId($order['details']['BT']->order_number);
 
+        //discount
+        if (isset($order['details']['BT']->coupon_discount)) {
+            $corder->setDiscountAmount(abs($order['details']['BT']->coupon_discount));
+        }
+
         //success / error callbacks
         $url = JURI::root () . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginnotification&method=coinfide';
         $url = $url . '&order=' . $order['details']['BT']->order_number;

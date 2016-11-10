@@ -140,7 +140,7 @@ class plgVmPaymentCoinfide extends vmPSPlugin
         $baddress->setCity($order['details']['BT']->city);
         $baddress->setFirstAddressLine($order['details']['BT']->address_1);
         $baddress->setSecondAddressLine($order['details']['BT']->address_2);
-        $baddress->setPostalCode($order['details']['BT']->zip);
+        $baddress->setPostalCode(preg_replace('/[^0-9]+/', '', $order['details']['BT']->zip));
         $baddress->setCountryCode(self::getCountryByID($order['details']['BT']->virtuemart_country_id, 'country_2_code'));
         $baddress->setState(self::getStateByID($order['details']['BT']->virtuemart_state_id));
 
